@@ -1,11 +1,27 @@
 <?php
 
 use Symfony\Component\Routing\RouteCollection;
-echo 32132;
+use Symfony\Component\Routing\Route;
+
 $routes = new RouteCollection();
 
-$routes->add('/', new Route('/'));
-$routes->add('home', new Route('/home/{nome}'));
-$routes->add('login', new Route('/login'));
+$routes->add('HomeController', new Route('/', [
+    '_controller' => function ($request) {
+
+        renderController($request);
+    },
+]));
+$routes->add('HomeController', new Route('home', [
+    '_controller' => function ($request) {
+
+        renderController($request);
+    },
+]));
+$routes->add('LoginController', new Route('login', [
+    '_controller' => function ($request) {
+
+        renderController($request);
+    },
+]));
 
 return $routes;

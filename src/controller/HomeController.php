@@ -1,14 +1,20 @@
 <?php
-
+;
 require_once __DIR__ . '/AppController.php';
 
 /**
  * @var $request
  * @var $response
  */
-;
 
-extract($request->query->all(), EXTR_SKIP);;
+function index($request)
+{
 
-die(require_once(__DIR__ . "/../view/home.php"));
+    extract($request->attributes->all(), EXTR_SKIP);
+    ob_start();
+    extract($request->query->all(), EXTR_SKIP);;
+
+    die(require_once(__DIR__ . "/../view/home.php"));
+}
+
 

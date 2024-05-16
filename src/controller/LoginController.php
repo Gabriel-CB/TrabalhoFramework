@@ -7,5 +7,14 @@ require_once __DIR__ . '/AppController.php';
  * @var $response
  */
 
-die(require_once(__DIR__ . "/../view/login.php"));
+function index($request)
+{
+
+    extract($request->attributes->all(), EXTR_SKIP);
+    ob_start();
+    extract($request->query->all(), EXTR_SKIP);;
+
+    die(require_once(__DIR__ . "/../view/login.php"));
+}
+
 

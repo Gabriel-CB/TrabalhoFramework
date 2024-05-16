@@ -11,33 +11,28 @@ use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 
+function renderController($request){
+
+    extract($request->attributes->all(), EXTR_SKIP);
+    ob_start();
+    include sprintf(__DIR__ . '/src/controller/%s.php', $_route);
+    index($request);
+}
+
 $request = Request::createFromGlobals();
-$response = new Response();
 $routes = include __DIR__ . '/app.php';
 
 $context = new RequestContext();
 $context->fromRequest($request);
 $matcher = new UrlMatcher($routes, $context);
 
-$attributes = $matcher->match($request->getPathInfo());
-
-
 try {
-    extract($matcher->match($request->getPathInfo()), EXTR_SKIP);
-    ob_start();
-    if (isset($map[$path])) {
-
-        ob_start();
-        include sprintf(__DIR__ . '/src/controller/%s.php', $map[$path]);
-        $response = new Response(ob_get_clean());
-    } else {
-        $response = new Response('Not Found', 404);
-    }
-
+    $request->attributes->add($matcher->match($request->getPathInfo()));
+    $response = call_user_func($request->attributes->get('_controller'), $request);
 } catch (Routing\Exception\ResourceNotFoundException $exception) {
     $response = new Response('Not Found', 404);
 } catch (Exception $exception) {
-    $response = new Response('An error ocurred', 500);
+    $response = new Response('An error occurred', 500);
 }
 
 $response->send();

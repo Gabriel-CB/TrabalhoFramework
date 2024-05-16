@@ -56,7 +56,7 @@
     </nav>
     <div style="padding: 30px">
         <h2>
-            <?= "Olá " . htmlspecialchars(isset($nome) ? $nome : '', ENT_QUOTES, 'UTF-8') . ". Seja bem vindo ao meu FrameWork !!" ?>
+            <?= "Olá" . ". Seja bem vindo ao meu FrameWork !!" ?>
         </h2>
     </div>
 </div>
