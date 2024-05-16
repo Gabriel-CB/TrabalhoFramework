@@ -35,7 +35,7 @@
                 <input type="password" class="form-control" required id="password" placeholder="Enter your password">
             </div>
         </div>
-        <a href="./home" type="submit" class="btn btn-success">Login</a>
+        <a href="./" type="submit" class="btn btn-success">Login</a>
     </form>
 
 </div>
