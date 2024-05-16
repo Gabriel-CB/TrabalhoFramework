@@ -46,7 +46,7 @@
                     </li>
                     <li class="nav-item">
                         <button class="nav-link"
-                                onclick="if (confirm('Do you really want exit ?')) { window.location.href='./login' }">
+                                onclick="if (confirm('Do you really want exit ?')) { window.location.href='./index.php/login' }">
                             Exit <i class="fas fa-door-open"></i>
                         </button>
                     </li>
