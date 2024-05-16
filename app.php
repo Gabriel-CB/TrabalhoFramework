@@ -11,12 +11,6 @@ $routes->add('HomeController', new Route('/', [
         renderController($request);
     },
 ]));
-$routes->add('HomeController', new Route('home', [
-    '_controller' => function ($request) {
-
-        renderController($request);
-    },
-]));
 $routes->add('LoginController', new Route('login', [
     '_controller' => function ($request) {
 
